@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+    id 'groovy'
+    id 'org.jetbrains.kotlin.jvm' version '1.4.21'
+}
+
+group 'com.github.ptomaszek.rangeparser'
+version '1.0.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    implementation 'io.github.microutils:kotlin-logging-jvm:2.0.2'
+
+    testImplementation 'org.spockframework:spock-core:2.0-M4-groovy-3.0'
+    testRuntimeOnly 'ch.qos.logback:logback-classic:1.2.3'
+}
+
+test {
+    useJUnitPlatform {
+    }
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}

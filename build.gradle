@@ -16,6 +16,8 @@ dependencies {
     implementation 'io.github.microutils:kotlin-logging-jvm:2.0.2'
 
     testImplementation 'org.spockframework:spock-core:2.0-M4-groovy-3.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
     testRuntimeOnly 'ch.qos.logback:logback-classic:1.2.3'
 }
 

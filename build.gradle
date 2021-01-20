@@ -2,10 +2,11 @@ plugins {
     id 'java'
     id 'groovy'
     id 'org.jetbrains.kotlin.jvm' version '1.4.21'
+    id 'maven-publish'
 }
 
 group 'com.github.ptomaszek'
-version '1.0.0-SNAPSHOT'
+version '1.0.0'
 
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
@@ -27,7 +28,26 @@ dependencies {
 test {
     useJUnitPlatform {
     }
-    testLogging {
-        events "passed", "skipped", "failed"
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            name = "OSSRH"
+            if(project.version.endsWith('-SNAPSHOT')) {
+                url "https://oss.sonatype.org/content/repositories/snapshots"
+            } else {
+                url "https://oss.sonatype.org/service/local/staging/deploy/maven2"
+            }
+            credentials {
+                username = System.getenv("MAVEN_USERNAME")
+                password = System.getenv("MAVEN_PASSWORD")
+            }
+        }
     }
 }

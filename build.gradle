@@ -1,17 +1,16 @@
 plugins {
-    id 'java'
     id 'groovy'
     id 'org.jetbrains.kotlin.jvm' version '1.4.21'
-    id 'maven-publish'
+    id "org.jetbrains.dokka" version "1.4.20"
+    id "com.vanniktech.maven.publish" version "0.13.0"
 }
-
-group 'com.github.ptomaszek'
 
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
@@ -26,53 +25,5 @@ dependencies {
 
 test {
     useJUnitPlatform {
-    }
-}
-
-java {
-    withSourcesJar()
-    withJavadocJar()
-}
-
-publishing {
-    publications {
-        maven(MavenPublication) {
-            from components.java
-            pom {
-                name = project.name
-                description = 'Numeric range parser'
-                url = 'https://github.com/ptomaszek/numeric-range-parser'
-                licenses {
-                    license {
-                        name = 'The MIT License'
-                        url = 'https://choosealicense.com/licenses/mit/'
-                    }
-                }
-                developers {
-                    developer {
-                        id = 'ptomaszek'
-                        name = 'Paweł Tomaszek'
-                    }
-                }
-                scm {
-                    connection = 'scm:git:https://github.com/ptomaszek/numeric-range-parser'
-                    url = 'https://github.com/ptomaszek/numeric-range-parser'
-                }
-            }
-        }
-    }
-    repositories {
-        maven {
-            name = "OSSRH"
-            if (project.version.endsWith('-SNAPSHOT')) {
-                url "https://oss.sonatype.org/content/repositories/snapshots"
-            } else {
-                url "https://oss.sonatype.org/service/local/staging/deploy/maven2"
-            }
-            credentials {
-                username = System.getenv("MAVEN_USERNAME")
-                password = System.getenv("MAVEN_PASSWORD")
-            }
-        }
     }
 }

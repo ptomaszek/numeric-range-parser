@@ -14,5 +14,5 @@ jobs:
       - name: Publish to Maven Central
         run: ./gradlew publish
         env:
-          MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
-          MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
+          SONATYPE_NEXUS_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+          SONATYPE_NEXUS_PASSWORD: ${{ secrets.OSSRH_TOKEN }}

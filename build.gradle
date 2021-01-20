@@ -27,3 +27,14 @@ test {
     useJUnitPlatform {
     }
 }
+signing {
+    signing {
+        if (project.hasProperty('SIGNING_PRIVATE_KEY') && project.hasProperty('SIGNING_PASSWORD')) {
+            println 'Found signing credentials. Signing...'
+            useInMemoryPgpKeys(project.getProperty('SIGNING_PRIVATE_KEY'), project.getProperty('SIGNING_PASSWORD'))
+            println 'Used useInMemoryPgpKeys()'
+        } else {
+            println "Didn't find signing credentials. Publishing will fail"
+        }
+    }
+}

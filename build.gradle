@@ -4,7 +4,7 @@ plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.4.21'
 }
 
-group 'com.github.ptomaszek.rangeparser'
+group 'com.github.ptomaszek'
 version '1.0.0-SNAPSHOT'
 
 sourceCompatibility = '1.8'

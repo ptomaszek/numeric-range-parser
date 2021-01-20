@@ -1,4 +1,4 @@
-package com.github.ptomaszek.rangeparser
+package com.github.ptomaszek.numericrangeparser
 
 class NumericRangeException : RuntimeException {
     constructor(message: String) : super(message)

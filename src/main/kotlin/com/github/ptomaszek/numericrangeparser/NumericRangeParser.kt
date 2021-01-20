@@ -1,6 +1,6 @@
 @file:Suppress("ComplexRedundantLet")
 
-package com.github.ptomaszek.rangeparser
+package com.github.ptomaszek.numericrangeparser
 
 import mu.KotlinLogging
 

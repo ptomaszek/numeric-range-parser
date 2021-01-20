@@ -1,4 +1,4 @@
-package com.github.ptomaszek.rangeparser
+package com.github.ptomaszek.numericrangeparser
 
 import spock.lang.Specification
 

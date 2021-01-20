@@ -6,7 +6,6 @@ plugins {
 }
 
 group 'com.github.ptomaszek'
-version '1.0.0'
 
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
@@ -30,16 +29,42 @@ test {
     }
 }
 
+java {
+    withSourcesJar()
+    withJavadocJar()
+}
+
 publishing {
     publications {
         maven(MavenPublication) {
             from components.java
+            pom {
+                name = project.name
+                description = 'Numeric range parser'
+                url = 'https://github.com/ptomaszek/numeric-range-parser'
+                licenses {
+                    license {
+                        name = 'The MIT License'
+                        url = 'https://choosealicense.com/licenses/mit/'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'ptomaszek'
+                        name = 'Paweł Tomaszek'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:https://github.com/ptomaszek/numeric-range-parser'
+                    url = 'https://github.com/ptomaszek/numeric-range-parser'
+                }
+            }
         }
     }
     repositories {
         maven {
             name = "OSSRH"
-            if(project.version.endsWith('-SNAPSHOT')) {
+            if (project.version.endsWith('-SNAPSHOT')) {
                 url "https://oss.sonatype.org/content/repositories/snapshots"
             } else {
                 url "https://oss.sonatype.org/service/local/staging/deploy/maven2"

@@ -14,7 +14,7 @@ jobs:
       - name: Publish to Maven Central
         run: ./gradlew uploadArchives --no-daemon --no-parallel
         env:
-          SONATYPE_NEXUS_USERNAME: ${{ secrets.OSSRH_USERNAME }}
-          SONATYPE_NEXUS_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
-          SIGNING_PRIVATE_KEY: ${{ secrets.SIGNING_PRIVATE_KEY }}
-          SIGNING_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
+          ORG_GRADLE_PROJECT_SONATYPE_NEXUS_USERNAME: ${{ secrets.SONATYPE_NEXUS_USERNAME }}
+          ORG_GRADLE_PROJECT_SONATYPE_NEXUS_PASSWORD: ${{ secrets.SONATYPE_NEXUS_PASSWORD }}
+          ORG_GRADLE_PROJECT_SIGNING_PRIVATE_KEY: ${{ secrets.SIGNING_PRIVATE_KEY }}
+          ORG_GRADLE_PROJECT_SIGNING_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}

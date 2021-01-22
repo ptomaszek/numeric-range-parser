@@ -1,7 +1,7 @@
 name: Publish package to the Maven Central Repository
-on: workflow_dispatch
-#  release:
-#    types: [ created ]
+on:
+  release:
+    types: [ created ]
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -14,7 +14,8 @@ jobs:
       - name: Publish to Maven Central
         run: ./gradlew uploadArchives --no-daemon --no-parallel
         env:
-          ORG_GRADLE_PROJECT_SONATYPE_NEXUS_USERNAME: ${{ secrets.OSSRH_USERNAME }}
-          ORG_GRADLE_PROJECT_SONATYPE_NEXUS_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
-          ORG_GRADLE_PROJECT_SIGNING_PRIVATE_KEY: ${{ secrets.SIGNING_PRIVATE_KEY }}
-          ORG_GRADLE_PROJECT_SIGNING_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
+          # used by com.vanniktech.maven.publish plugin
+          SONATYPE_NEXUS_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+          SONATYPE_NEXUS_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
+          SIGNING_PRIVATE_KEY: ${{ secrets.SIGNING_PRIVATE_KEY }}
+          SIGNING_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}

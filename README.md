@@ -1,6 +1,8 @@
-### Numeric range parser
+## Numeric range parser
 
-#### Examples
+Easily read numeric ranges from text.
+
+### Examples
 
 1. One-liner with default settings appropriate for parsing pages for printing:
     ```java
@@ -24,6 +26,8 @@
      parser.parse(" -5:14,  , 56  ");
      ```
 2. See [tests](src/test/groovy/com/github/ptomaszek/rangeparser/NumericRangeParserTest.groovy) for more examples
+
+### Installation
 
 #### Gradle
 

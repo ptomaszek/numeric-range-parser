@@ -1,19 +1,14 @@
 ### Numeric range parser
 
-#### Gradle
-
-#### Maven
-
 #### Examples
 
-1. One-liner with defaults valid for parsing pages in format `1-2, 5`:
-
-     ```java
+1. One-liner with default settings appropriate for parsing pages for printing:
+    ```java
      NumericRangeParser parser = NumericRangeParser.builder().build();
+     
+     parser.parse("1-2, 5");
      ```
-
-1. More explicit parser with lenient requirements for parsing input like " -5:14, &nbsp; , 56 &nbsp;" (notice redundant spaces
-   and no value between separators):
+1. More explicit parser creation with lenient input rules:
 
      ```java
      NumericRangeParser parser = NumericRangeParser.builder()
@@ -25,5 +20,24 @@
             .sorted(true)
             .limit(1_000)
             .build();
+   
+     parser.parse(" -5:14,  , 56  ");
      ```
-2. See [tests](src/test/groovy/com/github/ptomaszek/rangeparser/NumericRangeParserTest.groovy) for more examples 
+2. See [tests](src/test/groovy/com/github/ptomaszek/rangeparser/NumericRangeParserTest.groovy) for more examples
+
+#### Gradle
+
+```groovy 
+implementation 'com.github.ptomaszek:numeric-range-parser:1.0.0'
+```
+
+#### Maven
+
+```xml
+
+<dependency>
+    <groupId>com.github.ptomaszek</groupId>
+    <artifactId>numeric-range-parser</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```

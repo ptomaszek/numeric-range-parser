@@ -1,4 +1,5 @@
-name: Publish package to the Maven Central Repository
+# Gradle task comes from com.vanniktech.maven.publish plugin
+name: Upload package to the Maven Central Repository (Staging)
 on:
   release:
     types: [ created ]
@@ -11,10 +12,9 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-      - name: Publish to Maven Central
+      - name: Upload release
         run: ./gradlew uploadArchives --no-daemon --no-parallel
         env:
-          # used by com.vanniktech.maven.publish plugin
           SONATYPE_NEXUS_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           SONATYPE_NEXUS_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
           SIGNING_PRIVATE_KEY: ${{ secrets.SIGNING_PRIVATE_KEY }}
